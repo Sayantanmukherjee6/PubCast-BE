@@ -1,0 +1,13 @@
+auth0:
+  audience: ""
+  domain: ""
+  clientId: ""
+  clientSecret: ""
+
+spring:
+  data:
+    mongodb:
+      database: pub_cast
+      port: 27017
+      host: localhost
+
