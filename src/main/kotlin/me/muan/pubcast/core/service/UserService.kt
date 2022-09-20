@@ -29,8 +29,10 @@ class UserService(
             query.addCriteria(Criteria.where("email").`is`(body.email))
             val result= mongoTemplate.findOne(query,User::class.java)
             if(result == null) {
-                logger.error("Adding ${body.userName} to DB")
+                logger.info("Adding ${body.userName} to DB")
                 userRepository.save(userEntityConverter.convert(body))
+            } else {
+                logger.info("${body.userName} already exists")
             }
             ResponseEntity.status(HttpStatus.OK).body("User Created")
         } catch (exception: Exception) {
